@@ -1,0 +1,23 @@
+# Indicamos la versión
+version: '3.7'
+
+# Iniciamos los servicios
+services:
+  # Maria DB
+  mariadb:
+    build: ./mariadb
+    container_name: mariadb-lamp
+    volumes:
+      #  - ./mariadb_data:/var/lib/mysql podríamos usar un directorio local llamado mariadb_data
+      - mariadb-volume:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - lamp-network
+
+volumes:
+  mariadb-volume:
+
+networks:
+  lamp-network:
+    driver: bridge
