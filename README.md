@@ -16,6 +16,8 @@ Sencilla aplicación en NodeJS explicando algunas de sus librerías.
 
 - [NodeJS](https://nodejs.org/es/)
 - [NPM](https://www.npmjs.com/)
+- [Express](https://expressjs.com/es/)
+- [Handlebars](https://handlebarsjs.com/)
 
 ## Funcionamiento
 ```zsh

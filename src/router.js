@@ -4,6 +4,7 @@
  */
 
 import { join } from 'path';
+import db from './database';
 
 // exportamos los módulos
 export default (app) => {
@@ -18,14 +19,21 @@ export default (app) => {
   // Lo ideal sería crear un dichero de enrutación y un controlador, pero para tres páginas no merece la pena.
   // Pero sería el proceder
   // Una ruta por defecto de presentación
-  app.get('/plantilla', (req, res) => {
+  app.get('/plantilla', async (req, res) => {
     // Inyecta el fichero main.hbl" dentro de layout index, en su etiqueta Body
-    res.render('main',
-      {
-        layout: 'index',
-        titulo: 'NodeMonRest',
-        mensaje: '2ºDAW',
-      });
+    // Pruebo el controlador
+    console.log('Aqui');
+    db.conn.query('SELECT * from test', (err, rows) => {
+      if (err) throw err;
+      console.log('Datos recibidos');
+      res.render('main',
+        {
+          layout: 'index',
+          titulo: 'NodeMonRest',
+          mensaje: '2ºDAW',
+          personas: rows,
+        });
+    });
   });
 
   // Tambien podemos crear errores a rutas que no existen
