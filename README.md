@@ -17,7 +17,14 @@ Sencilla aplicación en NodeJS explicando algunas de sus librerías.
 - [NodeJS](https://nodejs.org/es/)
 - [NPM](https://www.npmjs.com/)
 
-
+## Funcionamiento
+```zsh
+$npm install --> Instala dependencias
+$npm run dev --> Ejecuta la versión de desarrollo
+$npm run watch --> Modo observació
+$npm run build --> Crea la versión de producción
+$npm start --> Ejecuta la versión de producción
+```
 
 ## Autor
 
