@@ -20,25 +20,30 @@ class Server {
   async start() {
     // Comprbamos si se ha inciiado MongoDB
     this.mariaDB = await db.connect();
-    // Le apliacamos la configuracion
-    config(this.app);
-    // Enrutamiento que hemos creado
-    router(this.app);
+    if (this.mariaDB) {
+      // Le apliacamos la configuracion
+      config(this.app);
+      // Enrutamiento que hemos creado
+      router(this.app);
 
-    // Enrutamiento que hemos creado
-    // Nos ponemos a escuchar a un puerto definido en la configuracion
-    this.instancia = this.app.listen(env.PORT, () => {
-      const address = this.instancia.address(); // obtenemos la dirección
-      const host = address.address === '::' ? 'localhost' : address; // dependiendo de la dirección asi configuramos
-      const port = env.PORT; // el puerto
-      const url = `http://${host}:${port}`;
-      this.instancia.url = url;
+      // Enrutamiento que hemos creado
+      // Nos ponemos a escuchar a un puerto definido en la configuracion
+      this.instancia = this.app.listen(env.PORT, () => {
+        const address = this.instancia.address(); // obtenemos la dirección
+        const host = address.address === '::' ? 'localhost' : address; // dependiendo de la dirección asi configuramos
+        const port = env.PORT; // el puerto
+        const url = `http://${host}:${port}`;
+        this.instancia.url = url;
 
-      if (process.env.NODE_ENV !== 'test') {
-        console.log(`⚑ Servidor ${os.platform()}: ${os.release()} escuchando ✓ -> ${url}`);
-      }
-    });
-    return this.instancia; // Devolvemos la instancia del servidor
+        if (process.env.NODE_ENV !== 'test') {
+          console.log(`⚑ Servidor Web/NodeJS en ${os.platform()}: ${os.release()}`);
+          console.log(`✓ Listo -> ${ url }`)
+        }
+      });
+      return this.instancia; // Devolvemos la instancia del servidor
+    }
+    console.error('✕ Servidor Error');
+    return null;
   }
 
   // Cierra el servidor

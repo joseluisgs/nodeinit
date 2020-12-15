@@ -4,36 +4,31 @@
  */
 
 import { join } from 'path';
-import db from './database';
+import ControladorBD from './controllers/ControladorBD';
 
 // exportamos los módulos
 export default (app) => {
   // indicamos que para ruta quien la debe resolver
-  // Cargamos index.
+  // Cargamos index, por ejemplo estático
   app.get('/', (req, res) => {
     console.log(__dirname);
     res.sendFile(join(__dirname, '/public/index.html'));
   });
 
   // Páginas webs generadas
-  // Lo ideal sería crear un dichero de enrutación y un controlador, pero para tres páginas no merece la pena.
-  // Pero sería el proceder
-  // Una ruta por defecto de presentación
+  // Lo ideal sería crear un dichero de enrutación propio y un controlador.
   app.get('/plantilla', async (req, res) => {
     // Inyecta el fichero main.hbl" dentro de layout index, en su etiqueta Body
     // Pruebo el controlador
     console.log('Aqui');
-    db.conn.query('SELECT * from test', (err, rows) => {
-      if (err) throw err;
-      console.log('Datos recibidos');
-      res.render('main',
-        {
-          layout: 'index',
-          titulo: 'NodeMonRest',
-          mensaje: '2ºDAW',
-          personas: rows,
-        });
-    });
+    const personas = await ControladorBD.listarPersonas();
+    res.render('main',
+      {
+        layout: 'index',
+        titulo: 'NodeMonRest',
+        mensaje: '2ºDAW',
+        personas,
+      });
   });
 
   // Tambien podemos crear errores a rutas que no existen
