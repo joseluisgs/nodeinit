@@ -1,6 +1,6 @@
 # Node Init
 
-Una sencilla colección de elementos de NodeJS como ejemplo inicial
+Una sencilla colección de elementos de NodeJS como ejemplo inicial para desarrollar un servidor web.
 
 [![NodeJS](https://img.shields.io/badge/NodeJS-Ready-83BA63)](https://hub.docker.com/r/joseluisgs/apirest-fake)
 [![JS Code](https://img.shields.io/badge/JS%20Code-ES2019-yellow)](https://www.ecma-international.org/ecma-262)
@@ -10,9 +10,9 @@ Una sencilla colección de elementos de NodeJS como ejemplo inicial
 
 ## Descripción
 
-Sencilla aplicación en NodeJS explicando algunas de sus librerías.
+Sencilla aplicación en NodeJS explicando algunas de sus librerías para construir un servidor web que sirva páginas estáticas y páginas dinámicas en base a un motor de plantillas.
 
-## Enlaces
+## Enlaces de interés
 
 - [NodeJS](https://nodejs.org/es/)
 - [NPM](https://www.npmjs.com/)
