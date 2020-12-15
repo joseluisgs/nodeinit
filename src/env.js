@@ -19,4 +19,9 @@ module.exports = {
   HOST: process.env.HOST || 'localhost',
   PORT: process.env.PORT || 8000,
   TIMEZONE: process.env.TIMEZONE || 'Europe/Madrid',
+  DB_USER: process.env.DB_USER,
+  DB_PASS: process.env.DB_PASS,
+  DB_URL: process.env.DB_URL,
+  DB_PORT: process.env.DB_PORT,
+  DB_NAME: process.env.DB_NAME,
 };

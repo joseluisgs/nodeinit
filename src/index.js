@@ -3,6 +3,7 @@ import express from 'express';
 import env from './env';
 import config from './config';
 import router from './router';
+import db from './database';
 
 /**
  * Clase siguiendo un patrón singleton, es decir, por muchas veces que se llamen, por ejemplo en las pruebas devolvemos el mismo.
@@ -12,10 +13,13 @@ class Server {
   constructor() {
     // Cargamos express como servidor
     this.app = express();
+    this.mariaDB = null;
   }
 
   // Lo definimos como tarea asíncrona, porque no sabemos lo que tardará en iniciarse
   async start() {
+    // Comprbamos si se ha inciiado MongoDB
+    this.mariaDB = await db.connect();
     // Le apliacamos la configuracion
     config(this.app);
     // Enrutamiento que hemos creado
