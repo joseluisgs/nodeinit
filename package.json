@@ -2,7 +2,7 @@
   "name": "nodeinit",
   "version": "1.0.0",
   "description": "Ejemplo inicil de NodeJS",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "node --require @babel/register src/index.js",
@@ -21,8 +21,12 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "connect-history-api-fallback": "^1.6.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "dotenv": "^8.2.0"
+    "express-handlebars": "^5.2.0",
+    "morgan": "^1.10.0",
+    "serve-static": "^1.14.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
