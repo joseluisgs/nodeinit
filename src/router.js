@@ -25,7 +25,7 @@ export default (app) => {
     res.render('main',
       {
         layout: 'index',
-        titulo: 'NodeMonRest',
+        titulo: 'Plantilla NodeJS',
         mensaje: '2ºDAW',
         personas,
       });

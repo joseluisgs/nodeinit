@@ -1,5 +1,9 @@
-# MariaDB
+# Imagen Base
 FROM mariadb:10.5
+
+# Contacto
+LABEL autor="joseluisgs"
+LABEL email="jlgs@cifpvirgendegracia.com"
 
 # Configuramos BBDD
 ENV MYSQL_ROOT_PASSWORD 123
