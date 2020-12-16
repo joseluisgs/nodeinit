@@ -1,0 +1,37 @@
+# Indicamos la versión
+version: '3.7'
+
+# Iniciamos los servicios
+services:
+  # Maria DB
+  mariadb:
+    build: ./mariadb
+    container_name: nodeapp-mariadb
+    volumes:
+      #  - ./mariadb_data:/var/lib/mysql podríamos usar un directorio local llamado mariadb_data
+      - mariadb-volume:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - node-network
+    
+  # NodeJS
+  node-app:
+    build: .
+    container_name: nodeapp-server
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - node-network
+
+volumes:
+  mariadb-volume:
+
+networks:
+  node-network:
+    driver: bridge

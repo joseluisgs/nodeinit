@@ -5,6 +5,7 @@
 
 # Directorio dist
 dist
+node_modules
 
 ### Node ###
 # Logs
@@ -78,7 +79,6 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
 .env.test
 .env*.local
 

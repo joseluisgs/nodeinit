@@ -2,7 +2,7 @@
   "name": "nodeinit",
   "version": "1.0.0",
   "description": "Ejemplo inicil de NodeJS",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "node --require @babel/register src/index.js",
@@ -11,7 +11,7 @@
     "watch": "nodemon",
     "prune": "npm prune --production",
     "undist": "rm -rf dist",
-    "build": "npm run undist && babel src -d dist && cp -r 'public' 'dist/public' && cp -r 'src/bd' 'dist/bd'"
+    "build": "npm run undist && babel src -d dist && cp -r 'src/public' 'dist/public' && cp -r 'src/views' 'dist/views'"
   },
   "keywords": [
     "Node",
@@ -21,7 +21,13 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "express": "^4.17.1"
+    "connect-history-api-fallback": "^1.6.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
+    "serve-static": "^1.14.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -33,7 +39,6 @@
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "cross-env": "^7.0.2",
     "nodemon": "^2.0.6"
   }
 }
